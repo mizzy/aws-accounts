@@ -29,7 +29,7 @@ resource "aws_ssoadmin_account_assignment" "administrators" {
   provider = aws.oregon
   for_each = toset([
     aws_organizations_organization.mizzy_org.master_account_id,
-    aws_organizations_account.sock_shop.id,
+    aws_organizations_account.sock_shop_cloudformation.id,
   ])
 
   instance_arn       = tolist(data.aws_ssoadmin_instances.mizzy_org.arns)[0]

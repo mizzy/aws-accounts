@@ -15,8 +15,8 @@ resource "aws_organizations_organizational_unit" "test" {
   parent_id = aws_organizations_organization.mizzy_org.roots[0].id
 }
 
-resource "aws_organizations_account" "sock_shop" {
-  name      = "sock-shop"
-  email     = "miya+aws+sock-shop@mizzy.org"
+resource "aws_organizations_account" "sock_shop_cloudformation" {
+  name      = "sock-shop-cloudformation"
+  email     = "miya+aws+sock-shop-cloudformation@mizzy.org"
   parent_id = aws_organizations_organizational_unit.test.id
 }
