@@ -20,3 +20,15 @@ resource "aws_organizations_account" "sock_shop_cloudformation" {
   email     = "miya+aws+sock-shop-cloudformation@mizzy.org"
   parent_id = aws_organizations_organizational_unit.test.id
 }
+
+resource "aws_organizations_account" "sock_shop_terraform" {
+  name      = "sock-shop-terraform"
+  email     = "miya+aws+sock-shop-terraform@mizzy.org"
+  parent_id = aws_organizations_organizational_unit.test.id
+}
+
+resource "aws_organizations_account" "sock_shop_pulumi" {
+  name      = "sock-shop-pulumi"
+  email     = "miya+aws+sock-shop-pulumi@mizzy.org"
+  parent_id = aws_organizations_organizational_unit.test.id
+}

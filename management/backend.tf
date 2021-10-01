@@ -6,6 +6,7 @@ terraform {
     key            = "management.tfstate"
     session_name   = "management"
     encrypt        = true
+    profile        = "management"
   }
 }
 
