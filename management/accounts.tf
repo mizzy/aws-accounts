@@ -32,3 +32,9 @@ resource "aws_organizations_account" "sock_shop_pulumi" {
   email     = "miya+aws+sock-shop-pulumi@mizzy.org"
   parent_id = aws_organizations_organizational_unit.test.id
 }
+
+resource "aws_organizations_account" "ecs_sample" {
+  name = "ecs-sample"
+  email = "miya+ecs-sample@mizzy.org"
+  parent_id = aws_organizations_organizational_unit.test.id
+}
