@@ -34,7 +34,13 @@ resource "aws_organizations_account" "sock_shop_pulumi" {
 }
 
 resource "aws_organizations_account" "ecs_sample" {
-  name = "ecs-sample"
-  email = "miya+ecs-sample@mizzy.org"
+  name      = "ecs-sample"
+  email     = "miya+ecs-sample@mizzy.org"
+  parent_id = aws_organizations_organizational_unit.test.id
+}
+
+resource "aws_organizations_account" "sakura_cloud_education_touch_demo" {
+  name      = "sakura-cloud-education-touch-demo"
+  email     = "miya+sakura-cloud-education-touch-demo@mizzy.org"
   parent_id = aws_organizations_organizational_unit.test.id
 }

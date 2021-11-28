@@ -33,6 +33,7 @@ resource "aws_ssoadmin_account_assignment" "administrators" {
     aws_organizations_account.sock_shop_terraform.id,
     aws_organizations_account.sock_shop_pulumi.id,
     aws_organizations_account.ecs_sample.id,
+    aws_organizations_account.sakura_cloud_education_touch_demo.id,
   ])
 
   instance_arn       = tolist(data.aws_ssoadmin_instances.mizzy_org.arns)[0]
