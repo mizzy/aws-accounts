@@ -3,9 +3,10 @@ data "aws_ssoadmin_instances" "mizzy_org" {
 }
 
 resource "aws_ssoadmin_permission_set" "administrator_access" {
-  provider     = aws.oregon
-  name         = "AdministratorAccess"
-  instance_arn = tolist(data.aws_ssoadmin_instances.mizzy_org.arns)[0]
+  provider         = aws.oregon
+  name             = "AdministratorAccess"
+  instance_arn     = tolist(data.aws_ssoadmin_instances.mizzy_org.arns)[0]
+  session_duration = "PT6H"
 }
 
 resource "aws_ssoadmin_managed_policy_attachment" "main" {
