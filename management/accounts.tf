@@ -44,3 +44,9 @@ resource "aws_organizations_account" "sakura_cloud_education_touch_demo" {
   email     = "miya+sakura-cloud-education-touch-demo@mizzy.org"
   parent_id = aws_organizations_organizational_unit.test.id
 }
+
+resource "aws_organizations_account" "tfrefresh" {
+  name      = "tfrefresh"
+  email     = "miya+tfrefresh@mizzy.org"
+  parent_id = aws_organizations_organizational_unit.test.id
+}
