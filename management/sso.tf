@@ -28,14 +28,7 @@ data "aws_identitystore_group" "administrators" {
 
 resource "aws_ssoadmin_account_assignment" "administrators" {
   provider = aws.oregon
-  for_each = toset([
-    aws_organizations_organization.mizzy_org.master_account_id,
-    aws_organizations_account.sock_shop_cloudformation.id,
-    aws_organizations_account.sock_shop_terraform.id,
-    aws_organizations_account.sock_shop_pulumi.id,
-    aws_organizations_account.ecs_sample.id,
-    aws_organizations_account.sakura_cloud_education_touch_demo.id,
-  ])
+  for_each = toset([for a in aws_organizations_organization.mizzy_org.accounts: a.id])
 
   instance_arn       = tolist(data.aws_ssoadmin_instances.mizzy_org.arns)[0]
   permission_set_arn = aws_ssoadmin_permission_set.administrator_access.arn
