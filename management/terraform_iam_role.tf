@@ -10,29 +10,16 @@ data "aws_iam_policy_document" "terraform_assume_role_policy" {
     principals {
       type = "AWS"
       identifiers = [
-        for a in aws_organizations_organization.mizzy_org.accounts :
-        "arn:aws:iam::${a.id}:root"
+        "arn:aws:iam::019115212452:root"
       ]
     }
     condition {
       test     = "ArnLike"
       variable = "aws:PrincipalArn"
-      values = flatten([
-        for a in aws_organizations_organization.mizzy_org.accounts :
-        [
-          "arn:aws:iam::${a.id}:role/github-actions",
-          "arn:aws:iam::${a.id}:role/aws-reserved/sso.amazonaws.com/us-west-2/AWSReservedSSO_AdministratorAccess_*",
-        ]
-      ])
-    }
-  }
-
-  statement {
-    effect  = "Allow"
-    actions = ["sts:AssumeRole"]
-    principals {
-      type        = "AWS"
-      identifiers = ["arn:aws:iam::887552608031:role/tfrefresh"]
+      values = [
+        "arn:aws:iam::019115212452:role/github-actions",
+        "arn:aws:iam::019115212452:role/aws-reserved/sso.amazonaws.com/us-west-2/AWSReservedSSO_AdministratorAccess_*",
+      ]
     }
   }
 }
