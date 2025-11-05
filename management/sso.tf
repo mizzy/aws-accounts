@@ -20,9 +20,11 @@ data "aws_identitystore_group" "administrators" {
   provider          = aws.oregon
   identity_store_id = tolist(data.aws_ssoadmin_instances.mizzy_org.identity_store_ids)[0]
 
-  filter {
-    attribute_path  = "DisplayName"
-    attribute_value = "Administrators"
+  alternate_identifier {
+    unique_attribute {
+      attribute_path  = "DisplayName"
+      attribute_value = "Administrators"
+    }
   }
 }
 
