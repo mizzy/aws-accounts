@@ -14,3 +14,15 @@ resource "aws_organizations_organizational_unit" "test" {
   name      = "Test"
   parent_id = aws_organizations_organization.mizzy_org.roots[0].id
 }
+
+resource "aws_organizations_account" "rds_proxy" {
+  name      = "rds-proxy"
+  email     = "miya+rds-proxy@mizzy.org"
+  parent_id = aws_organizations_organizational_unit.test.id
+}
+
+resource "aws_organizations_account" "rds_client" {
+  name      = "rds-client"
+  email     = "miya+rds-client@mizzy.org"
+  parent_id = aws_organizations_organizational_unit.test.id
+}
